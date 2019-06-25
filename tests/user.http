@@ -1,0 +1,15 @@
+GET localhost:8080/users
+
+###
+
+
+POST localhost:8080/users
+Content-Type: application/json
+
+{
+"name": "Henri",
+"age": 27,
+"company": "Aboutgoods Company"
+}
+
+###
