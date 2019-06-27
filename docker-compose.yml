@@ -1,6 +1,16 @@
-version: '3.1'
+version: '3.6'
 
 services:
+  application:
+    image: application
+    build: .
+    environment:
+      APP_DATABASE_URL: mongodb://root:example@mongo:27017/my_db
+      APP_PORT: 3000
+    ports:
+      - 9000:3000
+    configs:
+      - app
 
   mongo:
     image: mongo
@@ -8,14 +18,14 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-    ports:
-      - 27017:27017
-
   mongo-express:
     image: mongo-express
     restart: always
     ports:
-      - 8081:8081
+      - 8082:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
+configs:
+  app:
+    file: ./application.yml

@@ -1,15 +1,38 @@
-GET localhost:8080/users
+GET {{host}}/users
 
 ###
 
 
-POST localhost:8080/users
+POST {{host}}/users
 Content-Type: application/json
 
 {
-"name": "Henri",
-"age": 27,
-"company": "Aboutgoods Company"
+  "name": "Henri",
+  "age": 27,
+  "company": "Aboutgoods Company"
 }
+
+
+> {% client.global.set("userid",response.body.ID); %}
+
+###
+
+GET {{host}}/users/{{userid}}
+Content-Type: application/json
+
+###
+
+
+PATCH {{host}}/users/{{userid}}
+Content-Type: application/json
+
+{
+  "age": 28
+}
+
+###
+
+
+DELETE {{host}}/users/{{userid}}
 
 ###

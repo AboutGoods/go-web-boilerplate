@@ -1,7 +1,7 @@
 package database
 
 import (
-    "Antar/utils"
+    "App/utils"
     "context"
     "go.mongodb.org/mongo-driver/mongo"
     "go.mongodb.org/mongo-driver/mongo/options"

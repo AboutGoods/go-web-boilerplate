@@ -1,4 +1,4 @@
-module Antar
+module App
 
 go 1.12
 

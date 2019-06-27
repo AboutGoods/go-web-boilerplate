@@ -9,30 +9,38 @@ import (
 
 const ENV = "env"
 const DATABASE_URL = "database.url"
+const PORT = "port"
+const ADDRESS = "address"
 
-
-func defaults(){
-    viper.SetEnvPrefix("Antar")
+func defaults() {
+    viper.SetEnvPrefix("App")
 
     viper.SetDefault(ENV, "dev")
+    viper.SetDefault(PORT, 8000)
+    viper.SetDefault(ADDRESS, "0.0.0.0")
     viper.SetDefault(DATABASE_URL, "mongodb://localhost:27017/my_collection")
 
 }
 
-
-
-func Load() {
+func Load(force bool) {
     defaults()
-    autoload()
+    autoload(force)
 }
 
+func autoload(force bool) {
 
-func autoload() {
     viper.AddConfigPath("./")
     viper.SetConfigName("application")
+    if force {
+        viper.WriteConfigAs("application.yml");
+        logrus.Info("Forcing config to load")
+        os.Exit(0)
+    }
+
+
     if err := viper.ReadInConfig(); err != nil {
         viper.WriteConfigAs("application.yml");
-        logrus.Info("config file generated")
+        logrus.Warning("config file generated")
         os.Exit(0)
     }
     viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))

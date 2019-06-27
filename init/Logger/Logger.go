@@ -1,7 +1,7 @@
 package Logger
 
 import (
-    "Antar/init/Config"
+    "App/init/Config"
     log "github.com/sirupsen/logrus"
     "github.com/spf13/viper"
     "os"
