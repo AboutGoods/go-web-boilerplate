@@ -41,7 +41,6 @@ func autoload(force bool) {
     if err := viper.ReadInConfig(); err != nil {
         viper.WriteConfigAs("application.yml");
         logrus.Warning("config file generated")
-        os.Exit(0)
     }
     viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
     viper.AutomaticEnv()
