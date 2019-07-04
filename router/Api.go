@@ -7,7 +7,7 @@ import (
 )
 
 func DeclareRoutes(engine *gin.Engine) {
-
+    engine.Use(middlewares.Log)
     engine.GET("/ping", controllers.MainController{}.Ping)
     engine.GET("/", controllers.MainController{}.Homepage)
 

@@ -38,7 +38,7 @@ func main() {
     port := viper.GetInt(Config.PORT)
 
     logrus.WithFields(logrus.Fields{
-        "host": address,
+        "address": address,
         "port": port,
     }).Info("server starting")
 
