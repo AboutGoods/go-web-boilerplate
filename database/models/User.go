@@ -2,8 +2,8 @@ package models
 
 import (
     "App/database"
-    "App/utils/log"
     "fmt"
+    "github.com/AboutGoods/go-utils/log"
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/bson/primitive"
     "go.mongodb.org/mongo-driver/mongo"

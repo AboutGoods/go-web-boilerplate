@@ -1,8 +1,8 @@
 package database
 
 import (
-    "App/utils/log"
     "context"
+    "github.com/AboutGoods/go-utils/log"
     "go.mongodb.org/mongo-driver/mongo"
     "go.mongodb.org/mongo-driver/mongo/options"
     "net/url"

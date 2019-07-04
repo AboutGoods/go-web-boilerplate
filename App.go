@@ -5,7 +5,7 @@ import (
     "App/init/Config"
     "App/init/Logger"
     "App/router"
-    "App/utils/log"
+    "github.com/AboutGoods/go-utils/log"
     "flag"
     "github.com/gin-gonic/gin"
     "github.com/sirupsen/logrus"

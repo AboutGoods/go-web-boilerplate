@@ -3,6 +3,7 @@ module App
 go 1.12
 
 require (
+	github.com/AboutGoods/go-utils v0.0.0-20190704100227-75f62efe1792
 	github.com/gin-gonic/gin v1.4.0
 	github.com/golang/snappy v0.0.1 // indirect
 	github.com/sirupsen/logrus v1.4.2
