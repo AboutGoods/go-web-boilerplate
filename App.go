@@ -5,7 +5,7 @@ import (
     "App/init/Config"
     "App/init/Logger"
     "App/router"
-    "App/utils"
+    "App/utils/log"
     "flag"
     "github.com/gin-gonic/gin"
     "github.com/sirupsen/logrus"
@@ -40,8 +40,8 @@ func main() {
     logrus.WithFields(logrus.Fields{
         "host": address,
         "port": port,
-    }).Info("server has started")
+    }).Info("server starting")
 
     err := engine.Run(address +":"+ strconv.Itoa(port))
-    utils.PanicOnError(err)
+    log.PanicOnError(err)
 }

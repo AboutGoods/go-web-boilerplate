@@ -2,7 +2,7 @@ package models
 
 import (
     "App/database"
-    "App/utils"
+    "App/utils/log"
     "fmt"
     "go.mongodb.org/mongo-driver/bson"
     "go.mongodb.org/mongo-driver/bson/primitive"
@@ -49,14 +49,14 @@ func (user *User) Store() {
     if user.ID == nil {
         fmt.Println("abcdef")
         response, err := collection.InsertOne(database.Context, user)
-        utils.PanicOnError(err)
+        log.PanicOnError(err, "cannot insert user to database")
         id := response.InsertedID.(primitive.ObjectID)
         user.ID = &id
         return
     }
     _, err := collection.UpdateOne(database.Context, bson.M{"_id": *user.ID},
         bson.M{"$set": user})
-    utils.PanicOnError(err)
+    log.PanicOnError(err, "cannot update user to database")
 }
 
 type UserRepository struct {

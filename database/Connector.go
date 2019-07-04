@@ -1,7 +1,7 @@
 package database
 
 import (
-    "App/utils"
+    "App/utils/log"
     "context"
     "go.mongodb.org/mongo-driver/mongo"
     "go.mongodb.org/mongo-driver/mongo/options"
@@ -17,7 +17,7 @@ func NewConnection(connectionString string) {
     Context = context.Background()
 
     parsedUrl, err := url.Parse(connectionString)
-    utils.PanicOnError(err)
+    log.PanicOnError(err, "cannot parse mongodb connection url")
 
     databaseName := strings.Trim(parsedUrl.RequestURI(), "/")
 
@@ -32,7 +32,7 @@ func NewConnection(connectionString string) {
         ApplyURI(connectionString).
         SetAuth(credentials)
     client, err = mongo.Connect(Context, opt)
-    utils.PanicOnError(err)
+    log.PanicOnError(err, "cannot connect to mongodb")
     database = client.Database(databaseName)
 }
 
